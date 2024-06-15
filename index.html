@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Gallery</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./index.js"></script>
+  </head>
+  <script>
+    function displayImages(images) {
+      const gallery = document.getElementById("imageGallery");
+      gallery.innerHTML = "";
+
+      images.forEach((image) => {
+        //        console.log(image);
+        const div = document.createElement("div");
+        div.classList.add("gallery-item");
+
+        const img = document.createElement("img");
+        img.src = image.src;
+        img.alt = image.alt;
+
+        const desc = document.createElement("p");
+        desc.textContent = image.description;
+
+        div.appendChild(img);
+        div.appendChild(desc);
+
+        gallery.appendChild(div);
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      showAllImages();
+    });
+
+    function showAllImages() {
+      const allImages = AllImages();
+      displayImages(allImages);
+    }
+
+    function showFruits() {
+      const fruitsImages = fruits();
+      displayImages(fruitsImages);
+    }
+
+    function showFlowers() {
+      const flowersImages = flowers();
+      displayImages(flowersImages);
+    }
+
+    function showVegetables() {
+      const vegetablesImages = vegetables();
+      displayImages(vegetablesImages);
+    }
+  </script>
+
+  <body>
+    <nav>
+      <div class="navbar">
+        <button onclick="showAllImages()">All Images</button>
+        <button onclick="showFruits()">Fruits</button>
+        <button onclick="showFlowers()">Flowers</button>
+        <button onclick="showVegetables()">Vegetables</button>
+      </div>
+      <a href="https://www.codealpha.tech" class="logo">
+        <h2>Code Alpha</h2>
+      </a>
+    </nav>
+
+    <!-- Section to display the image gallery -->
+    <section id="imageGallery" class="muaz"></section>
+
+    <footer>
+      <p>Code Alpha</p>
+      <p>&copy; All rights Reserved</p>
+      <p><a href="https://www.codealpha.tech">codeAlpha.com</a></p>
+    </footer>
+  </body>
+</html>
